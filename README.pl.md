@@ -2,7 +2,7 @@
 
 [English](README.md) | **Polski**
 
-Dokumentacja dla wersji wtyczki **1.22** (ResourceSpace 11).
+Dokumentacja dla wersji wtyczki **1.23** (ResourceSpace 11).
 Znacznik *(od X.YY)* oznacza wersję wtyczki, od której funkcja jest dostępna. Funkcje bez
 znacznika są dostępne od wersji 1.00. Historia zmian: [CHANGELOG.md](CHANGELOG.md).
 
@@ -240,6 +240,8 @@ Wszystko, co zapisuje wtyczka, jest w `<filestore>/permission_group_manager/` *(
 Potrzebuje tylko prawa zapisu do filestore, które ResourceSpace i tak wymaga.
 
 ## Reset wtyczki *(od 1.19)*
+
+Panel jest zwinięty – kliknij tytuł, aby go rozwinąć *(od 1.23)*; po nieudanym resecie otwiera się sam.
 
 Panel **Reset plugin** na stronie wtyczki (po wpisaniu `RESET`) usuwa wszystko, co wtyczka
 zapisała w `<filestore>/permission_group_manager`: historię wersji i opisy własnych uprawnień. **Uprawnienia

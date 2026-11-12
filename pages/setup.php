@@ -12,6 +12,7 @@ $self        = $_SERVER['PHP_SELF'];
 $plugins_url = $baseurl_short . 'pages/team/team_plugins.php';
 $own_group   = (int) ($usergroup ?? 0);
 $action      = (string) ($_POST['action'] ?? '');
+$reset_open  = false; // open the collapsible "Reset plugin" box after a failed reset
 $message     = '';
 $errors      = array();
 
@@ -78,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action !== '') {
             exit;
         }
     } elseif ($action === 'reset') {
+        $reset_open = true; // stays open when the reset fails (a successful reset redirects)
         if (trim((string) ($_POST['reset_confirm'] ?? '')) !== 'RESET') {
             $errors[] = 'Not reset: type RESET (capital letters) to confirm.';
         } elseif (!permission_group_manager_reset()) {
@@ -325,6 +327,12 @@ include '../../../include/header.php';
         #gp-count.gp-has { font-weight: bold; color: #1e88e5; }
         .gp-box { margin: 14px 0; padding: 10px 14px; border: 1px solid rgba(128, 128, 128, 0.45); border-radius: 6px; }
         .gp-box h3 { margin: 0 0 8px; font-size: 1.05em; }
+        details.gp-box > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; }
+        details.gp-box > summary::-webkit-details-marker { display: none; }
+        details.gp-box > summary::before { content: "\25B8"; display: inline-block; transition: transform 0.15s; }
+        details.gp-box[open] > summary::before { transform: rotate(90deg); }
+        details.gp-box > summary h3 { margin: 0; display: inline; }
+        details.gp-box[open] > summary { margin-bottom: 8px; }
         .gp-box p { margin: 0.5em 0; }
         .gp-row-ctl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0.6em 0; }
         #gp-version { max-width: 100%; }
@@ -540,9 +548,9 @@ include '../../../include/header.php';
         <?php } ?>
     </div>
 
-    <!-- Reset -->
-    <div class="gp-box">
-        <h3>Reset plugin</h3>
+    <!-- Reset (collapsible) -->
+    <details class="gp-box"<?php echo $reset_open ? ' open' : ''; ?>>
+        <summary><h3>Reset plugin</h3></summary>
         <p>Deletes everything the plugin stored in <code><?php echo $h(permission_group_manager_base_dir()); ?></code>: the version history and the descriptions
             of custom permissions. <b>The permissions of the user groups are not changed.</b> This cannot be undone.</p>
         <form method="post" action="<?php echo $h($self); ?>" id="gp-reset">
@@ -552,7 +560,7 @@ include '../../../include/header.php';
                 <button type="submit" name="action" value="reset">Reset plugin</button>
             </div>
         </form>
-    </div>
+    </details>
 
     <script<?php echo $nonce; ?>>
     (function () {

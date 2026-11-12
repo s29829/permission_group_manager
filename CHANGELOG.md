@@ -3,6 +3,9 @@
 Numeracja wtyczki: 1.00, 1.01, 1.02 … (+0.01 przy każdej zmianie, `tools/release.py bump`).
 Wersja wtyczki w `permission_group_manager.yaml`; wersja całego repozytorium w pliku `VERSION` (zob. `CHANGELOG.md` w katalogu głównym).
 
+## [1.23] - 2026-11-12
+- Rozwijana ramka Reset plugin (jak w Custom CSS).
+
 ## [1.22] - 2026-11-12
 - Nowa nazwa: Permission Group Manager (katalog permission_group_manager, wcześniej Group Permissions / groupperms); przy pierwszym użyciu kopiuje dane starej wtyczki (historia wersji, opisy własnych uprawnień) bez usuwania starego katalogu; strona opcji przypomina o wyłączeniu groupperms; nowe repozytorium s29829/permission_group_manager.
 
