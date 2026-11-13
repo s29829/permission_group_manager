@@ -2,7 +2,7 @@
 
 [English](README.md) | **Polski**
 
-Dokumentacja dla wersji wtyczki **1.23** (ResourceSpace 11).
+Dokumentacja dla wersji wtyczki **1.24** (ResourceSpace 11).
 Znacznik *(od X.YY)* oznacza wersję wtyczki, od której funkcja jest dostępna. Funkcje bez
 znacznika są dostępne od wersji 1.00. Historia zmian: [CHANGELOG.md](CHANGELOG.md).
 
@@ -193,7 +193,8 @@ po nazwie** (bez rozróżniania wielkości liter), bo numery grup są różne w 
 Wtyczka jest dystrybuowana jako archiwum `permission_group_manager-<wersja>.zip` na stronie wydań:
 <https://github.com/s29829/permission_group_manager/releases>. Archiwum zawiera katalog `permission_group_manager/` z kodem, licencją
 i dokumentacją. Poniżej `<RS_ROOT>` to katalog instalacji ResourceSpace (np.
-`/var/www/resourcespace`), a `www-data` to użytkownik serwera WWW (w innych systemach np. `apache`).
+`/var/www/resourcespace`), a `www-data:www-data` to użytkownik i grupa, które uruchamiają PHP – przy Apache w RHEL, Rocky, Alma
+czy Fedorze `apache:apache` (zob. „nginx czy Apache” niżej).
 
 **Przez przeglądarkę:** Plugin Manager > Upload a plugin > wybierz plik `.zip` > Upload (przy
 aktualizacji: **Overwrite**).
@@ -219,6 +220,39 @@ sudo chown -R www-data:www-data <RS_ROOT>/plugins/permission_group_manager
 ```
 
 Aktualizacja: `sudo git -C <RS_ROOT>/plugins/permission_group_manager pull`.
+
+### nginx czy Apache
+
+Wtyczka działa tak samo z oboma serwerami WWW. Różnią się tylko użytkownik uruchamiający PHP, nazwy
+usług i kilka ustawień serwera – w poleceniach wyżej użyj użytkownika i grupy z tabeli:
+
+| | nginx + PHP-FPM (Ubuntu / Debian) | Apache (Ubuntu / Debian) | Apache (RHEL, Rocky, Alma, Fedora) |
+|---|---|---|---|
+| Użytkownik:grupa uruchamiające PHP | `www-data:www-data` | `www-data:www-data` | `apache:apache` |
+| Przeładowanie po aktualizacji | `sudo systemctl restart php8.3-fpm` | mod_php: `sudo systemctl reload apache2`; PHP-FPM: `sudo systemctl restart php8.3-fpm` | mod_php: `sudo systemctl reload httpd`; PHP-FPM: `sudo systemctl restart php-fpm` |
+
+- **Kto uruchamia PHP:** przy Apache z mod_php – użytkownik Apache; przy PHP-FPM (nginx lub Apache) –
+  użytkownik puli PHP-FPM (`user =` / `group =` w `/etc/php/<wersja>/fpm/pool.d/www.conf`, w rodzinie RHEL
+  `/etc/php-fpm.d/www.conf`). Sprawdzenie: `ps -o user= -C php-fpm8.3,php-fpm,apache2,httpd | sort -u`.
+- **Uprawnienia:** katalogi `755`, pliki `644`, właściciel = ten użytkownik i grupa (polecenia wyżej).
+  Pliki wtyczki muszą być tylko czytelne; `<filestore>` musi być zapisywalny dla tego użytkownika – tak
+  samo, jak wymaga tego ResourceSpace.
+- **Bez listowania katalogów (Apache):** Apache w Ubuntu / Debian pozwala listować katalogi w `/var/www`
+  (`Options Indexes` w `apache2.conf`). Wtyczka trzyma ustawienia w `<filestore>/<wtyczka>/data_<klucz>/`,
+  a listing pokazałby nazwę tego katalogu. Wyłącz listowanie dla ResourceSpace (VirtualHost albo
+  `apache2.conf` / `httpd.conf`) i przeładuj Apache:
+
+  ```apache
+  <Directory <RS_ROOT>>
+      Options -Indexes +FollowSymLinks
+  </Directory>
+  ```
+
+  nginx nie listuje katalogów, jeśli nie ustawiono `autoindex on`.
+- **SELinux (rodzina RHEL):** po rozpakowaniu przywróć etykiety plików:
+  `sudo restorecon -R <RS_ROOT>/plugins/permission_group_manager`. Filestore potrzebuje etykiety do zapisu (zwykle ustawionej
+  przy instalacji ResourceSpace): `sudo semanage fcontext -a -t httpd_sys_rw_content_t "<filestore>(/.*)?"`
+  i `sudo restorecon -R <filestore>`.
 
 Na koniec: System > Plugins, aktywuj „Permission Group Manager” i kliknij **Options**. Wtyczka sama tworzy
 swój katalog danych `<filestore>/permission_group_manager` – potrzebuje tylko prawa zapisu do filestore, które
