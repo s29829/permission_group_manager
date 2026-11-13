@@ -2,9 +2,9 @@
 
 [English](README.md) | **Polski**
 
-Dokumentacja dla wersji wtyczki **1.24** (ResourceSpace 11).
+Dokumentacja dla wersji wtyczki **1.25** (ResourceSpace 11).
 Znacznik *(od X.YY)* oznacza wersję wtyczki, od której funkcja jest dostępna. Funkcje bez
-znacznika są dostępne od wersji 1.00. Historia zmian: [CHANGELOG.md](CHANGELOG.md).
+znacznika są dostępne od wersji 1.00. Historia zmian (po angielsku): [CHANGELOG.md](CHANGELOG.md).
 
 Wtyczka pokazuje uprawnienia **wszystkich grup użytkowników w jednej tabeli**. Wiersze to
 uprawnienia, kolumny to grupy. Zamiast otwierać stronę uprawnień każdej grupy osobno, można

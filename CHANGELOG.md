@@ -1,87 +1,89 @@
 # Changelog - Permission Group Manager
 
-Numeracja wtyczki: 1.00, 1.01, 1.02 … (+0.01 przy każdej zmianie, `tools/release.py bump`).
-Wersja wtyczki w `permission_group_manager.yaml`; wersja całego repozytorium w pliku `VERSION` (zob. `CHANGELOG.md` w katalogu głównym).
+Plugin version numbers: 1.00, 1.01, 1.02 … (+0.01 for every change). The current version is in `permission_group_manager.yaml`.
+
+## [1.25] - 2026-11-13
+- Documentation: English is the main language - change history translated to English.
 
 ## [1.24] - 2026-11-13
-- Dokumentacja: instalacja na Apache (Ubuntu/Debian i rodzina RHEL) – użytkownik i grupa uruchamiające PHP (mod_php / PHP-FPM), uprawnienia, wyłączenie listowania katalogów (Options -Indexes), SELinux.
+- Documentation: installation on Apache (Ubuntu/Debian and the RHEL family) – user and group that run PHP (mod_php / PHP-FPM), permissions, no directory listings (Options -Indexes), SELinux.
 
 ## [1.23] - 2026-11-12
-- Rozwijana ramka Reset plugin (jak w Custom CSS).
+- Collapsible "Reset plugin" box (as in Custom CSS).
 
 ## [1.22] - 2026-11-12
-- Nowa nazwa: Permission Group Manager (katalog permission_group_manager, wcześniej Group Permissions / groupperms); przy pierwszym użyciu kopiuje dane starej wtyczki (historia wersji, opisy własnych uprawnień) bez usuwania starego katalogu; strona opcji przypomina o wyłączeniu groupperms; nowe repozytorium s29829/permission_group_manager.
+- New name: Permission Group Manager (folder permission_group_manager, previously Group Permissions / groupperms); on first use it copies the data of the old plugin (version history, custom permission descriptions) without deleting the old folder; the options page reminds you to deactivate groupperms; new repository s29829/permission_group_manager.
 
 ## [1.21] - 2026-11-11
-- Porządki w historii zmian (bez zmian w działaniu wtyczki).
+- Clean-up of the change history (no change in the plugin).
 
 ## [1.20] - 2026-11-11
-- Dokumentacja: instalacja przez Plugin Manager albo CLI (curl, unzip, chown) bez skryptów bash; wydania zawierają tylko archiwum zip.
+- Documentation: installation with Plugin Manager or on the command line (curl, unzip, chown) without bash scripts; releases contain only the zip archive.
 
 ## [1.19] - 2026-11-11
-- Dane wtyczki (historia wersji, opisy własnych uprawnień) w <filestore>/permission_group_manager/data_<klucz>/; automatyczne przeniesienie z <filestore>/permission_group_manager_versions_<klucz>/; opcja „Reset plugin” (usuwa dane wtyczki, uprawnień grup nie zmienia).
+- Plugin data (version history, custom permission descriptions) in <filestore>/permission_group_manager/data_<key>/; automatic move from <filestore>/permission_group_manager_versions_<key>/; "Reset plugin" (deletes the plugin data, does not change the group permissions).
 
 ## [1.18] - 2026-11-11
-- Eksport i import grup użytkowników (strona pages/transfer.php): eksport wybranych grup do JSON (nazwa, grupa nadrzędna, dziedziczenie, uprawnienia); import z przeglądem – wybór nowych grup do dodania, dla istniejących grup z innymi uprawnieniami wybór: zostaw istniejące / użyj z importu / pokaż różnice (tabela: w systemie, w imporcie, wynik – wstępnie zaznaczone zgodne uprawnienia, różnice wyróżnione i niezaznaczone); stan przed importem w historii wersji.
+- Export and import of user groups (page pages/transfer.php): export of selected groups to JSON (name, parent group, inheritance, permissions); import with a review – choose the new groups to add; for existing groups with other permissions choose: keep existing / use the import / show differences (table: in the system, in the import, result – matching permissions preselected, differences highlighted and not selected); the state before the import is stored in the version history.
 
 ## [1.17] - 2026-11-11
-- Zmiany w dokumentacji i narzędziach wydawniczych (bez zmian w działaniu wtyczki).
+- Changes in the documentation and release tools (no change in the plugin).
 
 ## [1.16] - 2026-11-11
-- Zmiany w dokumentacji i narzędziach wydawniczych (bez zmian w działaniu wtyczki).
+- Changes in the documentation and release tools (no change in the plugin).
 
 ## [1.15] - 2026-11-11
-- Samodzielny pakiet zip (release.py package): plik LICENSE-COMMERCIAL.md w katalogu wtyczki, licencja i dokumentacja w paczce; instrukcja instalacji z archiwum zip.
+- Self-contained zip package: LICENSE-COMMERCIAL.md in the plugin folder, license and documentation in the package; installation instructions for the zip archive.
 
 ## [1.14] - 2026-11-11
-- Licencja PolyForm Noncommercial 1.0.0 (plik LICENSE; użycie komercyjne tylko za pisemną zgodą autora); sekcja „Licencja” w dokumentacji.
+- License PolyForm Noncommercial 1.0.0 (file LICENSE; commercial use only with the author's written permission); "License" section in the documentation.
 
 ## [1.13] - 2026-11-11
-- Dokumentacja w katalogu wtyczki: README.md (EN) i README.pl.md (PL), ze znacznikami wersji, od której dostępna jest każda funkcja.
+- Documentation in the plugin folder: README.md (EN) and README.pl.md (PL), with the version in which each feature appeared.
 
 ## [1.12] - 2026-11-10
-- Wyraźny odstęp (z cienką linią) przed polami „Columns” / „Page” w panelu grup.
-- Kolumna „Select”: małe przyciski „All” / „None” w wersji outline (szara ramka, mniejsza czcionka, bez niebieskiego koloru).
+- Clear gap (with a thin line) before the "Columns" / "Page" fields in the groups panel.
+- "Select" column: small outline "All" / "None" buttons (grey border, smaller font, not blue).
 
 ## [1.11] - 2026-11-10
-- Panele filtrów połączone z tabelą (bez przerwy i zaokrągleń); cienka linia pod wierszem nagłówka zamiast pogrubionej.
-- Nazwy grup w nagłówkach skrócone do 20 znaków (pełna nazwa w dymku); 10, 15 lub 20 grup na stronę.
-- Lista „Page” tylko z zakresami liczbowymi (1-10, 11-20 …); więcej miejsca w panelu grup.
-- Kolumna „Row” → „Select” (ikony zamiast przycisków „All” / „None”).
+- Filter panels joined to the table (no gap, no rounded corners); a thin line below the header row instead of a bold one.
+- Group names in the headers shortened to 20 characters (full name in the tooltip); 10, 15 or 20 groups per page.
+- "Page" list only with number ranges (1-10, 11-20 …); more space in the groups panel.
+- Column "Row" → "Select" (icons instead of "All" / "None" buttons).
 
 ## [1.10] - 2026-11-10
-- Poprawka błędu „Sorry, an error has occurred”: odczyt nieistniejącego jeszcze pliku `custom_codes.json` przez `@file_get_contents()` wywoływał stronę błędu ResourceSpace (jego `errorhandler` reaguje także na ostrzeżenia wyciszone `@`). Usunięte wszystkie wywołania z `@` – pliki i katalogi są sprawdzane przed użyciem.
+- Fix for "Sorry, an error has occurred": reading the not yet existing file `custom_codes.json` with `@file_get_contents()` triggered the ResourceSpace error page (its error handler also reacts to warnings silenced with `@`). All `@` calls removed – files and folders are checked before use.
 
 ## [1.09] - 2026-11-10
-- Własne uprawnienia jako wiersze tabeli: każdy kod spoza katalogu to osobny wiersz z polami wyboru, edytowalnym opisem i linkiem „remove”; nowy wiersz dodaje się na końcu sekcji „Custom permissions” (opis + kod). Opisy w `custom_codes.json`, zapisywane w historii wersji. Kody `j<ref>` / `-j<ref>` dostają domyślny opis z nazwą featured collection.
-- Przyciemnione tło także w nagłówkach „Permission” i „Code”; pod „Permission” przełączniki „Sections: open all / close all”.
+- Custom permissions as table rows: every code outside the catalogue is a row with checkboxes, an editable description and a "remove" link; a new row is added at the end of the "Custom permissions" section (description + code). Descriptions in `custom_codes.json`, stored in the version history. Codes `j<ref>` / `-j<ref>` get a default description with the featured collection name.
+- Darker background also in the "Permission" and "Code" headers; "Sections: open all / close all" below "Permission".
 
 ## [1.08] - 2026-11-10
-- Przyciemnione tło w kolumnie „Code” i w panelu wyszukiwania uprawnień; przywrócone przyciski « » obok listy „Page”; „Show only: differing / unsaved” w jednej linii.
+- Darker background in the "Code" column and the permission search panel; « » buttons next to the "Page" list are back; "Show only: differing / unsaved" on one line.
 
 ## [1.07] - 2026-11-10
-- Lekko przyciemnione tło kolumny z nazwami uprawnień; „Show rows” jako pola wyboru; link „Open / Close all sections” w nagłówku „Permission”.
+- Slightly darker background of the permission name column; "Show rows" as checkboxes; "Open / Close all sections" link in the "Permission" header.
 
 ## [1.06] - 2026-11-10
-- Pola filtrów jak w innych formularzach ResourceSpace (`input type="text"`, styl motywu), etykieta nad każdym polem.
-- Mniej przycisków: lista „Show rows”, jeden link otwierający / zamykający sekcje, ikonka × w polach (oraz Esc), lista „Page” zamiast « ».
+- Filter fields like in other ResourceSpace forms (`input type="text"`, theme style), label above each field.
+- Fewer buttons: "Show rows" list, one link to open / close sections, × icon in the fields (and Esc), "Page" list instead of « ».
 
 ## [1.05] - 2026-11-10
-- Kolory paneli filtrów: niebieski (uprawnienia) i szary (grupy); panel uprawnień ma dokładnie szerokość kolumn „Permission” + „Code”; kolumna „Shown groups” → „Row”.
+- Colours of the filter panels: blue (permissions) and grey (groups); the permissions panel is exactly as wide as the "Permission" + "Code" columns; column "Shown groups" → "Row".
 
 ## [1.04] - 2026-11-10
-- Filtry nad tabelą w dwóch podpisanych panelach: „Filter permissions (table rows)” i „Filter user groups (table columns)”, z licznikami pokazanych wierszy / grup.
-- Kolumny grup o szerokości dopasowanej do nazwy, kolumna „Shown groups” o stałej szerokości.
+- Filters above the table in two labelled panels: "Filter permissions (table rows)" and "Filter user groups (table columns)", with counters of the shown rows / groups.
+- Group columns as wide as the name, "Shown groups" column with a fixed width.
 
 ## [1.03] - 2026-11-10
-- Uprawnienia wtyczek ResourceSpace jako osobne sekcje (tylko dla aktywnych wtyczek; kody i warunki jak w hookach `additionalperms`): Workflow actions (`wf<id>`), Brand guidelines (`bgv`, `bge`), AI smart search (`clip-sb`, `clip-v`), Consent management (`cm`), AI faces (`faces-v`), License management (`lm`).
-- Pole tekstowe „Custom permissions” dla każdej grupy (zamiast sekcji tylko do odczytu).
+- Permissions of ResourceSpace plugins as separate sections (only for active plugins; codes and conditions as in the `additionalperms` hooks): Workflow actions (`wf<id>`), Brand guidelines (`bgv`, `bge`), AI smart search (`clip-sb`, `clip-v`), Consent management (`cm`), AI faces (`faces-v`), License management (`lm`).
+- "Custom permissions" text field for each group (instead of a read-only section).
 
 ## [1.02] - 2026-11-09
-- Historia wersji (jak w Custom CSS): „Save changes” zapisuje poprzedni stan uprawnień, „Save as new version” tworzy kolejny numer; „Load into table”, „Restore this version”, „Delete this version”, „Delete all history”; ostatnie 50 wpisów jako pliki JSON w `<filestore>/permission_group_manager_versions_<klucz>`. Pierwsza wersja (v1) powstaje po aktywacji wtyczki (hook `initialise`).
+- Version history (as in Custom CSS): "Save changes" stores the previous state of the permissions, "Save as new version" creates the next number; "Load into table", "Restore this version", "Delete this version", "Delete all history"; the last 50 entries as JSON files in `<filestore>/permission_group_manager_versions_<key>`. The first version (v1) is created after the plugin is activated (hook `initialise`).
 
 ## [1.01] - 2026-11-09
-- Poprawki układu: tło tabeli odświeża się po przełączeniu trybu jasny / ciemny; zwykła pisownia nazw (bez kapitalików); kody w osobnej kolumnie „Code”; przyciski „All” / „None” na końcu wiersza; wyszukiwanie nad kolumnami; kopiowanie uprawnień pod tabelą; sekcje rozwijane kliknięciem w nagłówek.
+- Layout fixes: the table background follows the light / dark mode switch; normal spelling of names (no small caps); codes in a separate "Code" column; "All" / "None" buttons at the end of the row; search above the columns; copying permissions below the table; sections open and close by clicking the header.
 
 ## [1.00] - 2026-11-09
-- Pierwsza wersja: macierz uprawnień – wiersze to uprawnienia (sekcje jak na stronie uprawnień grupy w ResourceSpace 11, etykiety z `$lang`), kolumny to grupy użytkowników; stronicowanie kolumn, filtry, kopiowanie uprawnień między grupami; zapis przez `save_usergroup()` + `log_activity()`; ochrona przed odebraniem własnej grupie `t` / `a`.
+- First version: permission matrix – rows are permissions (sections as on the group permission page of ResourceSpace 11, labels from `$lang`), columns are user groups; column paging, filters, copying permissions between groups; saving with `save_usergroup()` + `log_activity()`; your own group cannot lose `t` / `a`.

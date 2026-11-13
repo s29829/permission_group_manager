@@ -2,9 +2,9 @@
 
 **English** | [Polski](README.pl.md)
 
-Documentation for plugin version **1.24** (ResourceSpace 11).
+Documentation for plugin version **1.25** (ResourceSpace 11).
 *(since X.YY)* marks the plugin version in which a feature first appeared. Features without
-a mark have been available since 1.00. Change history (in Polish): [CHANGELOG.md](CHANGELOG.md).
+a mark have been available since 1.00. Change history: [CHANGELOG.md](CHANGELOG.md).
 
 The plugin shows the permissions of **all user groups in one table**. Rows are permissions and
 columns are groups. Instead of opening the permission page of each group, you tick boxes in the

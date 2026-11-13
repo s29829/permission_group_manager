@@ -1,5 +1,5 @@
 name: permission_group_manager
-version: 1.24
+version: 1.25
 title: Permission Group Manager
 desc: Permission matrix for all user groups - tick permissions per group in one table (paging, filters, copy between groups)
 author: Jacek Kowalczyk
